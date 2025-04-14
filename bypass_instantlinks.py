@@ -132,8 +132,10 @@ def main():
             debug_log(
                 f"Hitting base URL {base_url} to get session cookies", args.verbose
             )
-            base_res = session.get(base_url, headers=get_html_headers(args.path))
-            debug_log(f"Initial GET status: {base_res.status_code}", args.verbose)
+            # base_res = session.get(base_url, headers=get_html_headers(args.path))
+            t_res = session.get(target_url, headers=get_html_headers(args.path))
+
+            debug_log(f"Initial GET status: {t_res.status_code}", args.verbose)
             debug_log(f"Initial cookies: {session.cookies.get_dict()}", args.verbose)
 
             # Step 2: Inject user cookies if provided
